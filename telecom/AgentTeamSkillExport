@@ -1,0 +1,3 @@
+# This will export the teams and skills of all Cisco Agent users
+
+run uccx sql db_cra select s.skillname, rsm.competencelevel, r.resourceLoginID, r.extension, r.resourceFirstName, r.ResourceLastName,t.teamname from skill s inner join resourceskillmapping rsm on s.skillid = rsm.skillid inner join resource r on rsm.resourceskillmapid = r.resourceskillmapid join team t on r.assignedteamid = t.teamid where s.active = 't' and r.active = 't' order by s.skillname, competencelevel, resourceloginid
